@@ -1,0 +1,13 @@
+name: WASM Example
+slug: wasmexample
+type: bundle
+description: simple wasm example plug.
+version: current
+env_file: src/example/.env
+output_folder: zig-out
+files:
+  schema.json: src/example/schema.json
+  server.wasm: zig-out/main.wasm
+  client.js: src/example/client.js
+  client.css: src/example/client.css
+  plug.schema.json: src/example/plug.schema.json

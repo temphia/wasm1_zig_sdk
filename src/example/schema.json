@@ -1,0 +1,10 @@
+{
+  "type": "bundle",
+  "items": [
+    {
+      "name": "plugex",
+      "type": "plug",
+      "file": "plug.schema.json"
+    }
+  ]
+}

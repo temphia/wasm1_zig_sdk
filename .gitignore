@@ -3,3 +3,5 @@ zig-out/
 
 main.wasm
 main.wasm.o
+src/example/.env
+build/wasmexample.zip
