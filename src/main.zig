@@ -1,11 +1,8 @@
 const std = @import("std");
-const testing = std.testing;
 
-export fn add(a: i32, b: i32) i32 {
-    return a + b;
-}
+extern "temphia" fn log(ptr: i32, size: i32) void;
 
-
-test "basic add functionality" {
-    try testing.expect(add(3, 7) == 10);
+export fn action_hello(ptr: i32, size: i32) void {
+    
+    log(ptr, size);
 }
