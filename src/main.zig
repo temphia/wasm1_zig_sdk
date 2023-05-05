@@ -1,8 +1,7 @@
 const std = @import("std");
 
-extern "temphia" fn log(ptr: i32, size: i32) void;
+const core = @import("./core.zig");
 
-export fn action_hello(ptr: i32, size: i32) void {
-    
-    log(ptr, size);
+export fn action_hello(ptr: i32, size: i32) void { 
+    core.log(ptr, size);
 }
