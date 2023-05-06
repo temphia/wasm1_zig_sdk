@@ -1,7 +1,7 @@
 .PHONY: build build_zip
 
 build:
-	zig build-lib src/main.zig -target wasm32-freestanding -dynamic -OReleaseSmall
+	zig build-lib example/main.zig -target wasm32-freestanding -dynamic -OReleaseSmall
 	mv main.wasm zig-cache/bin
 	mv main.wasm.o zig-cache/bin
 	wasm2wat zig-cache/bin/main.wasm -o zig-cache/bin/main.wat
