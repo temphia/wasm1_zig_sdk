@@ -1,6 +1,6 @@
 const std = @import("std");
 const sdk = @import("wasm1-zig-sdk");
-const core = sdk.core;
+const core = sdk.Core;
 
 pub const std_options = struct {
     pub fn logFn(
@@ -12,6 +12,10 @@ pub const std_options = struct {
 };
 
 pub export fn action_hello(ptr: i32, size: i32) void {
-    core.log(ptr + 42, size);
-    _ = sdk.utils.stringToPtr("Hello");
+    _ = ptr;
+    _ = size;
+    
+    core.log("HEYYYYY");
+
+    // _ = sdk.utils.stringToPtr("Hello");
 }
