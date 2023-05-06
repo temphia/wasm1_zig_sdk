@@ -4,3 +4,4 @@
 /main.wasm.o
 /src/example/.env
 /build/
+src/example/.temphia/.env
