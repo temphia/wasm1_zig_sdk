@@ -7,14 +7,16 @@ const Mode = std.builtin.Mode;
 const builtin = @import("builtin");
 
 pub fn build(b: *Builder) void {
-    var target = b.standardTargetOptions(.{});
     const mode = b.standardOptimizeOption(.{});
 
-    target.os_tag = .freestanding;
 
-    const wlib = b.addStaticLibrary(.{
+    const wlib = b.addSharedLibrary(.{
         .name = "wasm_zig_sdk",
-        .target = target,
+        .target = .{
+            .cpu_arch = .wasm32,
+            .os_tag = .freestanding,
+            .abi = .musl,
+        },
         .optimize = mode,
         .root_source_file = .{ .path = "example/main.zig" },
     });
@@ -24,9 +26,6 @@ pub fn build(b: *Builder) void {
     });
 
     wlib.force_pic = true;
-
-
-    // wlib.addPackage("wasm1-zig-sdk");
 
     b.installArtifact(wlib);
 }
