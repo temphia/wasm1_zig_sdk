@@ -16,7 +16,7 @@ pub fn build(b: *Builder) void {
         .name = "wasm_zig_sdk",
         .target = target,
         .optimize = mode,
-        .root_source_file = .{ .path = "src/main.zig" },
+        .root_source_file = .{ .path = "src/example/main.zig" },
     });
 
     wlib.force_pic = true;
