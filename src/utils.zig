@@ -4,7 +4,7 @@ const result = @import("./result.zig");
 var general_purpose_allocator = std.heap.GeneralPurposeAllocator(.{}){};
 const gpa = general_purpose_allocator.allocator();
 
-pub fn getSDKAllocator() *std.mem.Allocator {
+pub fn getAllocator() *std.mem.Allocator {
     return gpa;
 }
 
@@ -17,11 +17,11 @@ pub export fn freeBytes(addr: usize) void {
     gpa.destroy(@intToPtr([*]u8, addr));
 }
 
-pub export fn freeBytes2(bytes: []const u8) void {
+pub fn freeBytes2(bytes: []const u8) void {
     gpa.destroy(&bytes[0]);
 }
 
-pub export fn freeResult(r: result.Result) void {
+pub fn freeResult(r: result.Result) void {
     gpa.destroy(&r.inner_bytes[0]);
 }
 
