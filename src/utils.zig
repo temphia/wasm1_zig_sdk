@@ -18,11 +18,11 @@ pub export fn freeBytes(addr: usize) void {
 }
 
 pub fn freeBytes2(bytes: []const u8) void {
-    gpa.destroy(&bytes[0]);
+    gpa.destroy(bytes);
 }
 
 pub fn freeResult(r: result.Result) void {
-    gpa.destroy(&r.inner_bytes[0]);
+    gpa.free(&r.inner_bytes);
 }
 
 

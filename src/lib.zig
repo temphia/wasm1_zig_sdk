@@ -12,7 +12,7 @@ pub const Self = self.Self;
 
 pub const Result = result.Result;
 
-pub fn freeAlloc(comptime obj: anytype) void {
+pub fn freeAlloc(obj: anytype) void {
     switch (@TypeOf(obj)) {
         []const u8 => {
             utils.freeBytes2(obj);
