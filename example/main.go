@@ -50,11 +50,21 @@ func run() error {
 	}
 
 	ahello := mod.ExportedFunction("action_hello")
+	malloc := mod.ExportedFunction("allocBytes")
+	//	free := mod.ExportedFunction("freeBytes")
 
-	pp.Println(ahello.Call(ctx, 0, 0))
+	resp, err := malloc.Call(ctx, 24)
+	if err != nil {
+		return err
+	}
 
-	// malloc := mod.ExportedFunction("alloc")
-	// free := mod.ExportedFunction("free")
+	// set data
+
+	if !mod.Memory().Write(uint32(resp[0]), []byte(`hello@darkside`)) {
+		panic("Cannot write data")
+	}
+
+	pp.Println(ahello.Call(ctx, resp[0], 24))
 
 	return nil
 }

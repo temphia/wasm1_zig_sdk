@@ -25,7 +25,7 @@ pub fn build(b: *Builder) void {
         .source_file = .{ .path = "src/lib.zig" },
     });
 
-    wlib.export_symbol_names = &.{"action_hello"};
+    wlib.export_symbol_names = &.{"action_hello", "allocBytes", "freeBytes" };
     wlib.force_pic = true;
     wlib.rdynamic = true;
     wlib.strip = false;

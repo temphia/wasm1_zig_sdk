@@ -24,3 +24,8 @@ pub fn stringToPtr(s: []const u8) struct { ptr: usize, len: usize } {
         .len = s.len,
     };
 }
+
+pub fn ptrToBytes(ptr: usize, len: usize) []u8 {
+    const ptr_u8 = @intToPtr([*]u8, ptr);
+    return ptr_u8[0..len];
+}
