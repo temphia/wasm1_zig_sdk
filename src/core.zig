@@ -1,5 +1,6 @@
 const std = @import("std");
 const utils = @import("./utils.zig");
+const Result = @import("./result.zig").Result;
 
 extern "temphia1" fn log(ptr: usize, size: usize) void;
 extern "temphia1" fn sleep(msec: u32) void;
@@ -27,17 +28,24 @@ pub const Core = struct {
         raw_sleep(msec);
     }
 
-    pub fn get_self_file(file: []const u8) void {
+    pub fn get_self_file(file: []const u8) Result {
         const rPtr = 0;
         const rSize = 0;
         const modPtr = 0;
         const fresp = utils.stringToPtr(file);
-        raw_get_self_file(
+
+        const ok = raw_get_self_file(
             fresp.ptr,
             fresp.len,
             @ptrToInt(&rPtr),
             @ptrToInt(&rSize),
             @ptrToInt(&modPtr),
         );
+
+        if (ok) {
+            return Result.fromOkBytes(utils.ptrToBytes(rPtr, rSize));
+        }
+        
+        return Result.fromErrBytes(utils.ptrToBytes(rPtr, rSize));
     }
 };
