@@ -21,7 +21,6 @@ pub const HttpRequest = struct {
     body: []const u8,
 };
 
-
 pub const HttpResponse = struct {
     status_code: usize,
     headers: std.StringHashMap([]const u8),

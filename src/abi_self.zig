@@ -52,7 +52,7 @@ pub const Self = struct {
         if (raw_self_list_resources(@ptrToInt(&roffset), @ptrToInt(&rlen))) {
             return result.fromErrBytes(utils.ptrToBytes(roffset, rlen));
         }
-        
+
         return result.fromErrBytes(utils.ptrToBytes(roffset, rlen));
     }
 };
