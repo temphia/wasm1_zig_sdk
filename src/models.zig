@@ -14,19 +14,6 @@ pub const Link = struct {
     agent_id: []const u8,
 };
 
-pub const HttpRequest = struct {
-    method: []const u8,
-    path: []const u8,
-    headers: std.StringHashMap([]const u8),
-    body: []const u8,
-};
-
-pub const HttpResponse = struct {
-    status_code: usize,
-    headers: std.StringHashMap([]const u8),
-    body: []const u8,
-};
-
 pub const PValue = struct {
     key: []const u8,
     value: []const u8,
