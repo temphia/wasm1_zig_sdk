@@ -4,7 +4,7 @@ const Result = @import("./result.zig").Result;
 
 extern "temphia1" fn log(ptr: usize, size: usize) void;
 extern "temphia1" fn sleep(msec: u32) void;
-extern "temphia1" fn get_self_file(fptr: usize, fsize: usize, respptr: usize, resplen: usize, modPtr: usize) void;
+extern "temphia1" fn get_self_file(ctxid: usize, fptr: usize, fsize: usize, respptr: usize, resplen: usize, modPtr: usize) void;
 
 pub inline fn raw_log(ptr: usize, size: usize) void {
     log(ptr, size);
