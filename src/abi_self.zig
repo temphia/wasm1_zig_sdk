@@ -1,10 +1,13 @@
 const std = @import("std");
 const utils = @import("./utils");
 const result = @import("./result.zig");
+const models = @import("./models.zig");
+const Allocator = std.mem.Allocator;
+
 const Result = result.Result;
 
 pub const Self = struct {
-    pub fn ListResources() Result {
+    pub fn list_resources() Result {
         const roffset: usize = 0;
         const rlen: usize = 0;
 
@@ -14,6 +17,25 @@ pub const Self = struct {
 
         return result.fromErrBytes(utils.ptrToBytes(roffset, rlen));
     }
+
+    pub fn get_resource(alloc: Allocator, name: []const u8) !Resource {
+        const roffset: usize = 0;
+        const rlen: usize = 0;
+
+        const nptr = utils.stringToPtr(name);
+
+        if (raw_self_get_resource(0, fresp.ptr, fresp.len, @ptrToInt(&roffset), @ptrToInt(&rlen))) {
+            const rjson = utils.ptrToBytes(roffset, rlen);
+            return std.json.parseFromSlice(models.Resource, std.testing.allocator, rjson, .{});
+        }
+    }
+
+    pub fn in_links() bool {}
+    pub fn out_links() bool {}
+    pub fn link_exec(name: []const u8, method: []const u8, usize, data: []const u8, asynk: bool, detached: bool) bool {}
+    pub fn new_module(name: []const u8, usize, data: []const u8) usize {}
+    pub fn module_exec(mid: usize, name: []const u8, method: []const u8, usize, data: []const u8) bool {}
+    pub fn fork_exec(name: []const u8, method: []const u8, usize, data: []const u8) bool {}
 };
 
 // raw

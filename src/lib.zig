@@ -5,6 +5,8 @@ pub const models = @import("./models.zig");
 // actual ABI
 pub const core = @import("./abi_core.zig");
 pub const self = @import("./abi_self.zig");
+pub const plugkv = @import("./abi_plugkv.zig");
+pub const invoker = @import("./abi_invoker.zig");
 
 // ABI Wrappers
 pub const Core = core.Core;

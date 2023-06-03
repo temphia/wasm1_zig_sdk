@@ -1,3 +1,13 @@
+pub const PlugKV = struct {
+    
+
+
+};
+
+
+
+// abi
+
 extern "temphia1" fn plugkv_set(ctxid: usize, txid: usize, keyPtr: usize, keyLen: usize, valuePtr: usize, valueLen: usize, optsPtr: usize, optsLen: usize, respOffset: usize, respLen: usize) bool ;
 extern "temphia1" fn plugkv_update(ctxid: usize, txid: usize, keyPtr: usize, keyLen: usize, valuePtr: usize, valueLen: usize, optsPtr: usize, optsLen: usize, respOffset: usize, respLen: usize ) bool;
 extern "temphia1" fn plugkv_get(ctxid: usize, txid: usize, keyPtr: usize, keyLen: usize, respOffset: usize, respLen : usize) bool;
